@@ -1,0 +1,93 @@
+﻿extends layout
+    
+block head
+    meta(name="apple-mobile-web-app-capable", content="yes")
+    link(rel='stylesheet', href='/stylesheets/mouse-remote.css')
+    link(rel='stylesheet', href='stylesheets/striped/style.css')
+    link(rel='stylesheet', href='stylesheets/striped/style-mobile.css')
+    link(rel='stylesheet', href='stylesheets/orange.min.css')
+    link(rel='stylesheet', href='stylesheets/jquery.mobile.icons.min.css')
+    link(rel='stylesheet', href='stylesheets/jquery.mobile.structure-1.4.2.min.css')
+    
+
+    script(src='/libraries/jquery-2.1.0.min.js')
+    script(src='/libraries/jquery.mobile-1.4.2.min.js')
+        
+    script(src='libraries/skel.min.js')
+    script(src='libraries/skel-panels.min.js')
+    script(src='libraries/init.js')
+
+    script(src='libraries/sylvester.js')
+    
+    script(src='libraries/three.min.js')    
+
+    script(src='/libraries/socket.io.min.js')
+    script(src='/libraries/canvasjs.min.js')
+    script(src='/javascripts/utils.js')
+    script(src='/javascripts/mouse-remote.js')
+
+block content
+
+
+    body.left-sidebar
+
+        // Wrapper
+        #wrapper
+            #content
+                #content-inner
+                    
+                    #menubutton.toggle.skel-panels-include(data-action="togglePanel", data-args="sidePanel")
+                        //img#menubuttonimage(src="images/menu.png")
+                    
+                    #page-gyro
+                        img.mousebutton.unselectable#detector(src="images/0.png", usemap="#map")
+
+                        img.mousebutton.unselectable#left(src="images/left.png")
+                        img.mousebutton.unselectable#right(src="images/right.png")
+                        img.mousebutton.unselectable#middle(src="images/middle.png")
+
+                        img.mousebutton.mousebutton-pressed#left-pressed(src="images/left-pressed.png")
+                        img.mousebutton.mousebutton-pressed#right-pressed(src="images/right-pressed.png")
+                        img.mousebutton.mousebutton-pressed#middle-pressed(src="images/middle-pressed.png")
+
+
+                        map(name="map")
+                            area#map-left(shape="poly", coords ="87,12,228,202,216,218,209,250,215,284,229,315,5,315,5,176,20,104,49,50,87,12", href="javascript:;", target="_blank", alt="left")
+                            area#map-right(shape="poly", coords ="89,10,97,5,315,5,315,212,271,193,231,200,89,10", href="javascript:;", target="_blank", alt="left")
+                            area#map-middle(shape="poly", coords ="233,315,215,270,215,229,232,204,264,195,292,203,315,216,315,315,233,315", href="javascript:;", target="_blank", alt="left")
+                        #debug
+                            #interval-container
+                                | interval: 
+                                span#interval
+                                |  ms / 
+                                span#hz
+                                |  Hz
+
+                            #chart-alpha.chart.hidden
+                            #chart-gamma-rate.chart
+                            #orientation.hidden
+                                | alpha: #[span#alpha] #[br]
+                                | beta: #[span#beta] #[br]
+                                | gamma: #[span#gamma] #[br]
+
+                                |acceleration incl. gravity #[br]
+                                | x: #[span#x] #[br]
+                                | y: #[span#y] #[br]
+                                | z: #[span#z] #[br]
+                    #page-settings.hidden
+                        h1 Settings
+
+                        label(for="slider-sens") Sensitivity:
+                        input(type="range", name="slider-sens", id="slider-sens", value="25", min="20", max="40")
+            #sidebar
+                    
+                                       
+                
+                nav#nav
+                    ul
+                        li
+                            #nav-gyro Gyro mouse
+                        li
+                            #nav-touch Touchpad
+                        li
+                            #nav-settings Settings

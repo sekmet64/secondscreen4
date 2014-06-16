@@ -1,0 +1,34 @@
+﻿extends layout
+
+block head
+    link(rel='stylesheet', href='/stylesheets/youtube-remote.css')
+    script(src='/libraries/cookies.min.js')
+    script(src='/libraries/jquery-2.1.0.min.js')
+    script(src='/libraries/socket.io.min.js')
+    script(src='/javascripts/utils.js')
+    script(src='/javascripts/youtube-remote.js')
+    script(src='https://apis.google.com/js/client.js?onload=googleApiClientReady')
+
+block content
+    div.controls
+        span#now-playing-title
+        br
+
+        #controls-row
+            #now-playing-thumbnail
+                img#now-playing-thumbnail-image
+                img.now-playing-overlay(src="images/pause64.png")
+
+            #now-playing-progress-bar
+                #now-playing-progress
+                #now-playing-duration
+                    span#now-playing-time-elapsed-text 00:00
+                    | /
+                    span#now-playing-duration-text
+    ul#videos
+    
+    .footer Icons made by
+        a(href="http://www.freepik.com", title="Freepik") Freepik
+        | from 
+        
+        a(href="http://www.flaticon.com/free-icon/media-play-symbol_31128", title="Flaticon") www.flaticon.com

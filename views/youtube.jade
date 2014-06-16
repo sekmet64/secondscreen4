@@ -1,0 +1,15 @@
+﻿extends layout
+
+block head
+    link(rel='stylesheet', href='/stylesheets/youtube.css')
+    script(src='/libraries/cookies.min.js')
+    script(src='/libraries/jquery-2.1.0.min.js')
+    script(src='/libraries/swfobject.js')
+    script(src='/libraries/socket.io.min.js')
+    script(src='/javascripts/youtube.js')
+block content
+
+    div.overlay Your remote control URL: http://ctrlcouch.com/
+        span#unique-id-link
+            
+    #ytapiplayer

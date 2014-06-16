@@ -1,0 +1,47 @@
+﻿extends layout
+    
+block head
+    link(rel='stylesheet', href='/stylesheets/mouse-remote.css')
+    link(rel='stylesheet', href='stylesheets/striped/skel-noscript.css')
+    link(rel='stylesheet', href='stylesheets/striped/style.css')
+    link(rel='stylesheet', href='stylesheets/striped/style-mobile.css')
+    
+
+
+    script(src='/libraries/jquery-2.1.0.min.js')
+
+    script(src='libraries/skel.min.js')
+    script(src='libraries/skel-panels.min.js')
+    script(src='libraries/init.js')
+
+    script(src='/libraries/socket.io.min.js')
+    script(src='/libraries/canvasjs.min.js')
+    script(src='/javascripts/utils.js')
+    script(src='/javascripts/mouse-remote.js')
+
+block content
+
+
+    body.left-sidebar
+
+        // Wrapper
+        #wrapper
+            #content
+                #content-inner
+                    
+                    div.toggle(data-action="panelToggle", data-args="sidePanel")
+
+                    img.mousebutton(src="images/left.png")
+                    img.mousebutton(src="images/right.png")
+                            
+
+                
+                #sidebar
+                    
+                                       
+                
+                    nav#nav
+                        ul
+                            li.current_page_item Gyro mouse
+                            li Touchpad
+                            li Settings
